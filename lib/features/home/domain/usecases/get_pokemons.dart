@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:pokedex/core/error/failure.dart';
 import 'package:pokedex/core/usecase/usecases.dart';
@@ -11,9 +13,9 @@ class GetPokemons implements UseCase<List<Pokemon>, FetchPokemonsParms> {
 
   @override
   Future<Either<Failure, List<Pokemon>>> call(FetchPokemonsParms params) async {
-    return await _repository
-        .getPokemons(params.limit, params.offset)
-        .fold((l) => left(l), (r) async => right(await r));
+    log('UseCase: Fetching Pokemon from  ${params.offset} to ${params.offset + params.limit}');
+
+    return _repository.getPokemons(params.limit, params.offset);
   }
 }
 

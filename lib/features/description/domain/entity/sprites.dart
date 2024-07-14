@@ -1,11 +1,11 @@
 class Sprites {
-  final String backDefault;
+  final String? backDefault;
   final String? backFemale;
-  final String backShiny;
+  final String? backShiny;
   final String? backShinyFemale;
-  final String frontDefault;
+  final String? frontDefault;
   final String? frontFemale;
-  final String frontShiny;
+  final String? frontShiny;
   final String? frontShinyFemale;
   final OtherSprites other;
 
@@ -37,7 +37,7 @@ class OtherSprites {
 }
 
 class DreamWorld {
-  final String frontDefault;
+  final String? frontDefault;
   final String? frontFemale;
 
   DreamWorld({
@@ -71,13 +71,13 @@ class OfficialArtwork {
 }
 
 class Showdown {
-  final String backDefault;
+  final String? backDefault;
   final String? backFemale;
-  final String backShiny;
+  final String? backShiny;
   final String? backShinyFemale;
-  final String frontDefault;
+  final String? frontDefault;
   final String? frontFemale;
-  final String frontShiny;
+  final String? frontShiny;
   final String? frontShinyFemale;
 
   Showdown({

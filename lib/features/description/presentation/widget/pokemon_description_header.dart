@@ -128,9 +128,12 @@ class PokemonDescriptionHeader extends StatelessWidget {
           ),
         ),
         Positioned(
-            child: CachedNetworkImage(
-          imageUrl: pokemon.imageUrl,
-          height: screenSize.height * 0.45,
+            child: Hero(
+          tag: 'pokemon-${pokemon.id}',
+          child: CachedNetworkImage(
+            imageUrl: pokemon.imageUrl,
+            height: (screenSize.width * 0.6).clamp(0, 300),
+          ),
         )),
       ],
     );

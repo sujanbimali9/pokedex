@@ -1,5 +1,6 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
+@immutable
 class PokemonTypeColor {
   static const Map<String, Color> _typeColors = {
     'bug': Color(0xFF94BC4A),

@@ -35,7 +35,6 @@ class OtherSpritesModel extends OtherSprites {
     required super.officialArtwork,
     required super.showdown,
   });
-
   factory OtherSpritesModel.fromJson(Map<String, dynamic> json) {
     return OtherSpritesModel(
       dreamWorld: DreamWorldModel.fromJson(json['dream_world']),

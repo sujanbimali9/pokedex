@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:pokedex/features/description/presentation/bloc/pokemon_detail_bloc.dart';
 import 'package:pokedex/features/home/presentation/bloc/home_bloc.dart';
 import 'package:pokedex/features/home/presentation/screen/home.dart';
@@ -40,4 +41,4 @@ final types = ['Grass', 'Poison'];
 final breeding = ['Gender', 'Egg Group', 'Edd Cycle'];
 final breeding2 = ['87.5%   12.5%', 'Monster', 'Grass'];
 final tab = ['About', 'Base Stats', 'Evolution', 'Moves'];
-final list = ['About', 'Moves', 'Evolution', 'Genre', 'Stats', 'Abilities'];
+final list = ['About', 'Evolution', 'Stats'];

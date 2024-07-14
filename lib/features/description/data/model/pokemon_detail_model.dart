@@ -26,10 +26,10 @@ class PokemonDetailsModel extends PokemonDetail {
     required Map<String, dynamic> species,
   }) {
     return PokemonDetailsModel(
-      name: capitalize(pokemonDetail['name']),
-      height: pokemonDetail['height'],
-      weight: pokemonDetail['weight'],
-      id: pokemonDetail['id'],
+      name: capitalize(pokemonDetail['name'] ?? ''),
+      height: pokemonDetail['height'] ?? '',
+      weight: pokemonDetail['weight'] ?? '',
+      id: pokemonDetail['id'] ?? '',
       sprites: SpriteModel.fromJson(pokemonDetail['sprites']),
       ability: (pokemonDetail['abilities'] as List)
           .map((e) => AbilityModel.fromJson(e))
@@ -40,7 +40,8 @@ class PokemonDetailsModel extends PokemonDetail {
       type: (pokemonDetail['types'] as List)
           .map((e) => PokemonTypeModel.fromJson(e))
           .toList(),
-      evolutionChain: EvolutionChainModel.fromJson(evolutionChain),
+      evolutionChain: EvolutionChainModel.fromJson(
+          evolutionChain, capitalize(pokemonDetail['name'] ?? '')),
       species: SpeciesModel.fromJson(species),
     );
   }

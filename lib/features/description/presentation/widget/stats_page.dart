@@ -11,33 +11,37 @@ class StatsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return CustomScrollView(
+      slivers: [
+        SliverOverlapInjector(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
         if (pokemonStats != null)
-          ...List.generate(
-            pokemonStats!.length,
-            (index) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: PokemonStats(
-                  indicatorColor:
-                      PokemonTypeColor.getColorForType(pokemonType.name),
-                  statName: pokemonStats![index].name,
-                  statValue: pokemonStats![index].baseStat,
-                  textColor: Colors.black),
-            ),
-          )
+          SliverList.builder(
+              itemCount: pokemonStats!.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                  child: PokemonStats(
+                      indicatorColor:
+                          PokemonTypeColor.getColorForType(pokemonType.name),
+                      statName: pokemonStats![index].name,
+                      statValue: pokemonStats![index].baseStat,
+                      textColor: Colors.black),
+                );
+              })
         else
-          ...List.generate(
-            7,
-            (index) => const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.0),
-              child: PokemonStats(
-                statName: 'Attack',
-                textColor: Colors.black,
-                indicatorColor: Colors.red,
-              ),
-            ),
-          )
+          SliverList.builder(
+              itemCount: 6,
+              itemBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0),
+                  child: PokemonStats(
+                    statName: 'Attack',
+                    textColor: Colors.black,
+                    indicatorColor: Colors.red,
+                  ),
+                );
+              }),
       ],
     );
   }

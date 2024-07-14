@@ -18,12 +18,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         if (state.pokemons.isEmpty) {
           emit(const _Loading([], 0));
         } else {
+          if (state.lastPokemonId >= 2025) return;
           emit(_FetchingMore(state.pokemons, state.lastPokemonId));
         }
         await Future.delayed(const Duration(seconds: 2), () async {
-          final res = await _getPokemons(FetchPokemonsParms(
-              limit: event.limit ?? 20,
-              offset: event.offset ?? state.lastPokemonId));
+          final limit = (event.limit ?? 20);
+          final offset = (event.offset ?? state.lastPokemonId).clamp(1, 2025);
+          final res = await _getPokemons(
+              FetchPokemonsParms(limit: limit, offset: offset));
           res.fold(
             (l) => emit(_Error(state.pokemons, state.lastPokemonId, l.message)),
             (r) => emit(

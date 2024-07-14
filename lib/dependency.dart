@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pokedex/features/description/data/repository/detail_repository_imp.dart';
 import 'package:pokedex/features/description/data/source/remote_data_source.dart';
@@ -15,30 +14,15 @@ final serviceLocater = GetIt.instance;
 
 void initDependency() {
   serviceLocater
-        ..registerLazySingleton(() => Dio())
-        ..registerFactory<HomeDataSource>(
-            () => HomeDataSourceImpl(dio: serviceLocater()))
-        ..registerFactory<HomeRepository>(
-            () => HomeRepositoryImp(dataSource: serviceLocater()))
-        ..registerFactory(() => GetPokemons(repository: serviceLocater()))
-        ..registerFactory(() => HomeBloc(serviceLocater()))
-        ..registerFactory<DescriptionDataSource>(
-            () => DescriptionDataSourceImp(dio: serviceLocater()))
-        ..registerFactory<DetailRepository>(
-            () => DetailRepositoryImp(dataSource: serviceLocater()))
-        ..registerFactory(() => GetPokemonDetail(repository: serviceLocater()))
-        ..registerFactory(() => PokemonDetailBloc(serviceLocater()))
-
-      //registerLazySingleton(() => GetPokemonDetail())..
-      //registerLazySingleton(() => GetPokemonTypes())..
-      //registerLazySingleton(() => GetPokemonSpecies())..
-      //registerLazySingleton(() => GetPokemonEvolutionChain())..
-      //registerLazySingleton(() => GetPokemonHabitat())..
-      //registerLazySingleton(() => GetPokemonColor())..
-      //registerLazySingleton(() => GetPokemonShape())..
-      //registerLazySingleton(() => GetPokemonAbility())..
-      //registerLazySingleton(() => GetPokemonStat())..
-      //registerLazySingleton(() => GetPokemonMove())..
-      //registerLazySingleton(() => GetPokemonGender())
-      ;
+    ..registerFactory<HomeDataSource>(() => HomeDataSourceImplIsolates())
+    ..registerFactory<HomeRepository>(
+        () => HomeRepositoryImp(dataSource: serviceLocater()))
+    ..registerFactory(() => GetPokemons(repository: serviceLocater()))
+    ..registerFactory(() => HomeBloc(serviceLocater()))
+    ..registerFactory<DescriptionDataSource>(
+        () => DescriptionDataSourceImpIsolates())
+    ..registerFactory<DetailRepository>(
+        () => DetailRepositoryImp(dataSource: serviceLocater()))
+    ..registerFactory(() => GetPokemonDetail(repository: serviceLocater()))
+    ..registerFactory(() => PokemonDetailBloc(serviceLocater()));
 }

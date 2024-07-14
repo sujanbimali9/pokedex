@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:pokedex/core/error/failure.dart';
 import 'package:pokedex/core/error/server_error.dart';
@@ -13,13 +15,18 @@ class HomeRepositoryImp implements HomeRepository {
       : _dataSource = dataSource;
 
   @override
-  Either<Failure, Future<List<Pokemon>>> getPokemons(int limit, int offset) {
+  Future<Either<Failure, List<Pokemon>>> getPokemons(
+      int limit, int offset) async {
+    log('HomeRepositoryImp.getPokemons: Start fetching Pokémon list with limit $limit and offset $offset');
     try {
-      final pokemons = _dataSource.getPokemons(limit, offset);
+      final pokemons = await _dataSource.getPokemons(limit, offset);
+      log('HomeRepositoryImp.getPokemons: Successfully fetched Pokémon list');
       return right(pokemons);
     } on ServerException catch (e) {
-      return left(ServerFailure(message: e.toString()));
+      log('HomeRepositoryImp.getPokemons: ServerException - ${e.message}');
+      return left(ServerFailure(message: e.message));
     } catch (e) {
+      log('HomeRepositoryImp.getPokemons: Unexpected error - $e');
       return left(ServerFailure(message: e.toString()));
     }
   }

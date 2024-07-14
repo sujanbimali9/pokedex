@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:pokedex/core/error/failure.dart';
 import 'package:pokedex/core/usecase/usecases.dart';
@@ -10,8 +12,10 @@ class GetPokemonDetail implements UseCase<PokemonDetail, Pokemon> {
 
   GetPokemonDetail({required DetailRepository repository})
       : _repository = repository;
+
   @override
   Future<Either<Failure, PokemonDetail>> call(Pokemon parms) async {
+    log('UseCase: Fetching Pokemon detail for ID: ${parms.id}');
     return await _repository.getPokemonDetail(parms.id.toString());
   }
 }

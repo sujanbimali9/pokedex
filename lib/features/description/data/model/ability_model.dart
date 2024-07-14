@@ -10,7 +10,7 @@ class AbilityModel extends Ability {
 
   factory AbilityModel.fromJson(Map<String, dynamic> json) {
     return AbilityModel(
-      name: capitalize(json['ability']['name']),
+      name: capitalize(json['ability']?['name'] ?? ''),
       isHidden: json['is_hidden'],
       slot: json['slot'],
     );

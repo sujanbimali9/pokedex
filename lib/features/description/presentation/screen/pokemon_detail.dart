@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/core/utils/color/type_color.dart';
@@ -34,38 +33,54 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DefaultTabController(
-        length: 4,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            PokemonDescriptionHeader(pokemon: widget.pokemon),
-            TabBar(
-              tabAlignment: TabAlignment.start,
-              isScrollable: true,
-              indicatorColor: PokemonTypeColor.getColorForType(
-                  widget.pokemon.pokemonTypes.first.type.name),
-              labelStyle: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.w500),
-              unselectedLabelStyle: const TextStyle(color: Colors.black54),
-              tabs: tab
-                  .map(
-                    (e) => Tab(
-                      child: Text(e),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        body: SafeArea(
+          child: ScrollConfiguration(
+            behavior: const ScrollBehavior().copyWith(scrollbars: false),
+            child: NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) => [
+                SliverToBoxAdapter(
+                    child: PokemonDescriptionHeader(pokemon: widget.pokemon)),
+                SliverOverlapAbsorber(
+                  handle:
+                      NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                  sliver: SliverPersistentHeader(
+                    floating: true,
+                    pinned: true,
+                    delegate: PersistanceTabBarDelegate(
+                      tabBar: TabBar(
+                        tabAlignment: TabAlignment.start,
+                        isScrollable: true,
+                        indicatorColor: PokemonTypeColor.getColorForType(
+                            widget.pokemon.pokemonTypes.first.type.name),
+                        labelStyle: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w500),
+                        unselectedLabelStyle:
+                            const TextStyle(color: Colors.black54),
+                        tabs: tab
+                            .map(
+                              (e) => Tab(
+                                child: Text(e),
+                              ),
+                            )
+                            .toList(),
+                      ),
                     ),
-                  )
-                  .toList(),
-            ),
-            Expanded(
-              child: BlocBuilder<PokemonDetailBloc, PokemonDetailState>(
+                  ),
+                ),
+              ],
+              body: BlocBuilder<PokemonDetailBloc, PokemonDetailState>(
                 buildWhen: (previous, current) {
                   return current.maybeWhen(
-                      orElse: () => false, loaded: (_) => true);
+                      orElse: () => false,
+                      loaded: (_) => true,
+                      initial: () => true);
                 },
                 builder: (context, state) => TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
-                  dragStartBehavior: DragStartBehavior.down,
                   children: [
                     AboutPage(
                       pokemonDetail:
@@ -80,17 +95,48 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                       ),
                     ),
                     EvolutionScreen(
-                        pokemonDetail:
-                            state.mapOrNull(loaded: (value) => value.pokemon)),
+                      pokemonDetail:
+                          state.mapOrNull(loaded: (value) => value.pokemon),
+                    ),
                     const Column(),
                   ],
                 ),
               ),
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );
+  }
+}
+
+class PersistanceTabBarDelegate extends SliverPersistentHeaderDelegate {
+  final TabBar tabBar;
+  final double max;
+  final double min;
+
+  PersistanceTabBarDelegate({
+    required this.tabBar,
+    this.max = kTextTabBarHeight,
+    this.min = kTextTabBarHeight,
+  });
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+        color: Theme.of(context).scaffoldBackgroundColor, child: tabBar);
+  }
+
+  @override
+  double get maxExtent => max;
+
+  @override
+  double get minExtent => min;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
 
@@ -102,20 +148,29 @@ class EvolutionScreen extends StatelessWidget {
     final evolutions = pokemonDetail?.evolutionChain.evolutions;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Evolution',
-            style: TextStyle(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
+      child: CustomScrollView(
+        slivers: [
+          SliverOverlapInjector(
+              handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context)),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                const Text(
+                  'Evolution',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 15),
+                if (evolutions != null && evolutions.isNotEmpty)
+                  for (var evolution in evolutions)
+                    EvolutionCard(evolution: evolution)
+                else
+                  const Text('No Evolution Data Found')
+              ],
+            ),
           ),
-          const SizedBox(height: 15),
-          if (evolutions != null)
-            for (var evolution in evolutions)
-              EvolutionCard(evolution: evolution)
-          else
-            const Text('No Evolution Data Found')
         ],
       ),
     );
@@ -133,23 +188,36 @@ class EvolutionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         EvolutionImgWithName(
           imageUrl: getImageUrlById(evolution.pokemonId),
           name: evolution.pokemon,
         ),
-        const Spacer(),
-        Column(
-          children: [
-            const Icon(Icons.arrow_forward),
-            Text(
-              evolution.methods,
-              style: const TextStyle(
-                  color: Colors.black, fontWeight: FontWeight.w600),
-            ),
-          ],
+        Flexible(
+          fit: FlexFit.loose,
+          child: Column(
+            children: [
+              Text(
+                evolution.trigger,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13),
+              ),
+              const Icon(Icons.arrow_forward),
+              Text(
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                evolution.methods,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 13),
+              ),
+            ],
+          ),
         ),
-        const Spacer(),
         EvolutionImgWithName(
           imageUrl: getImageUrlById(evolution.nextEvolutionId),
           name: evolution.nextEvolution,
@@ -182,18 +250,22 @@ class EvolutionImgWithName extends StatelessWidget {
               child: Container(
                 height: 100,
                 width: 100,
-                color: Colors.red.withOpacity(0.2),
+                color: const Color.fromARGB(255, 75, 72, 72).withOpacity(0.2),
               ),
             ),
             CachedNetworkImage(
-                height: screenSize.width * 0.3, imageUrl: imageUrl),
+                errorWidget: (context, url, error) {
+                  return const Icon(Icons.error);
+                },
+                height: screenSize.width * 0.3,
+                imageUrl: imageUrl),
           ],
         ),
         const SizedBox(height: 10),
         Text(
           name,
-          style:
-              const TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.w600, fontSize: 17),
         ),
         const SizedBox(height: 20),
       ],

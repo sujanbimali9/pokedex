@@ -1,8 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/core/utils/color/type_color.dart';
+import 'package:pokedex/features/description/presentation/bloc/pokemon_detail_bloc.dart';
+import 'package:pokedex/features/home/domain/entity/pokemon_entity.dart';
 import 'package:pokedex/main.dart';
 
-class DarkPokemonDetailScreen extends StatelessWidget {
-  const DarkPokemonDetailScreen({super.key});
+class DarkPokemonDetailScreen extends StatefulWidget {
+  const DarkPokemonDetailScreen({super.key, required this.pokemon});
+  final Pokemon pokemon;
+
+  @override
+  State<DarkPokemonDetailScreen> createState() =>
+      _DarkPokemonDetailScreenState();
+}
+
+class _DarkPokemonDetailScreenState extends State<DarkPokemonDetailScreen> {
+  @override
+  void initState() {
+    context
+        .read<PokemonDetailBloc>()
+        .add(PokemonDetailEvent.getPokemonDetails(widget.pokemon));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +31,15 @@ class DarkPokemonDetailScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back),
+        ),
         centerTitle: true,
-        title: const Text('#0059', style: TextStyle(color: Colors.white)),
+        title: Text('#0${widget.pokemon.id}',
+            style: const TextStyle(color: Colors.white)),
       ),
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
@@ -29,33 +56,43 @@ class DarkPokemonDetailScreen extends StatelessWidget {
                   width: screenSize.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    gradient: const RadialGradient(
-                      colors: [Colors.red, Colors.black],
+                    gradient: RadialGradient(
+                      colors: [
+                        PokemonTypeColor.getColorForType(
+                            widget.pokemon.pokemonTypes.first.type.name),
+                        Colors.black
+                      ],
                     ),
                   ),
-                  child: Image.asset(
-                    'assets/growlith.png',
-                    height: screenSize.width * 0.2,
-                    width: screenSize.width * 0.2,
+                ),
+                Positioned(
+                  bottom: screenSize.width / 3.5,
+                  child: Hero(
+                    tag: 'pokemon-${widget.pokemon.id}',
+                    child: CachedNetworkImage(
+                      imageUrl: widget.pokemon.imageUrl,
+                      width: screenSize.width * 0.5,
+                    ),
                   ),
                 ),
-                const Positioned(
-                    bottom: 10,
-                    child: Column(
-                      children: [
-                        Text(
-                          'Arcanine',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Fire / Rock',
-                          style: TextStyle(fontSize: 20, color: Colors.grey),
-                        ),
-                      ],
-                    )),
+                Column(
+                  children: [
+                    Text(
+                      widget.pokemon.name,
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      widget.pokemon.pokemonTypes
+                          .map((e) => e.type.name)
+                          .join('/'),
+                      style: const TextStyle(fontSize: 20, color: Colors.grey),
+                    ),
+                    const SizedBox(height: 20)
+                  ],
+                ),
               ],
             ),
             SingleChildScrollView(

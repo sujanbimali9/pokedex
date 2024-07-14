@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:pokedex/core/error/failure.dart';
 import 'package:pokedex/core/error/server_error.dart';
@@ -11,12 +13,18 @@ class DetailRepositoryImp implements DetailRepository {
 
   DetailRepositoryImp({required DescriptionDataSource dataSource})
       : _dataSource = dataSource;
+
   @override
   Future<Either<Failure, PokemonDetail>> getPokemonDetail(String id) async {
     try {
+      log('Repository: Fetching Pokemon detail for ID: $id');
       return right(await _dataSource.getPokemonDetails(id));
     } on ServerException catch (e) {
+      log('Repository: ServerException - ${e.message}');
       return left(ServerFailure(message: e.message));
+    } catch (e) {
+      log('Repository: Unexpected error - $e');
+      return left(ServerFailure(message: e.toString()));
     }
   }
 }
