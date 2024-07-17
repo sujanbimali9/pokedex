@@ -1,93 +1,65 @@
 class Sprites {
-  final String? backDefault;
-  final String? backFemale;
+  final int id;
+  final OtherSprites others;
   final String? backShiny;
-  final String? backShinyFemale;
-  final String? frontDefault;
-  final String? frontFemale;
+  final String? backFemale;
   final String? frontShiny;
+  final String? backDefault;
+  final String? frontFemale;
+  final String? frontDefault;
+  final String? backShinyFemale;
   final String? frontShinyFemale;
-  final OtherSprites other;
 
   Sprites({
-    required this.backDefault,
+    required this.id,
+    required this.others,
+    this.backShiny,
     this.backFemale,
-    required this.backShiny,
-    this.backShinyFemale,
-    required this.frontDefault,
+    this.frontShiny,
+    this.backDefault,
     this.frontFemale,
-    required this.frontShiny,
+    this.frontDefault,
+    this.backShinyFemale,
     this.frontShinyFemale,
-    required this.other,
   });
 }
 
 class OtherSprites {
-  final DreamWorld dreamWorld;
-  final HomeSprites home;
-  final OfficialArtwork officialArtwork;
-  final Showdown showdown;
+  final int id;
+  final String? homeFrontShiny;
+  final String? homeFrontFemale;
+  final String? homeFrontDefault;
+  final String? showdownBackShiny;
+  final String? showdownBackFemale;
+  final String? showdownFrontShiny;
+  final String? showdownBackDefault;
+  final String? showdownFrontFemale;
+  final String? homeFrontShinyFemale;
+  final String? showdownFrontDefault;
+  final String? dreamWorldFrontFemale;
+  final String? dreamWorldFrontDefault;
+  final String? showdownBackShinyFemale;
+  final String? showdownFrontShinyFemale;
+  final String? officialArtworkFrontShiny;
+  final String? officialArtworkFrontDefault;
 
   OtherSprites({
-    required this.dreamWorld,
-    required this.home,
-    required this.officialArtwork,
-    required this.showdown,
-  });
-}
-
-class DreamWorld {
-  final String? frontDefault;
-  final String? frontFemale;
-
-  DreamWorld({
-    required this.frontDefault,
-    this.frontFemale,
-  });
-}
-
-class HomeSprites {
-  final String frontDefault;
-  final String? frontFemale;
-  final String frontShiny;
-  final String? frontShinyFemale;
-
-  HomeSprites({
-    required this.frontDefault,
-    this.frontFemale,
-    required this.frontShiny,
-    this.frontShinyFemale,
-  });
-}
-
-class OfficialArtwork {
-  final String frontDefault;
-  final String frontShiny;
-
-  OfficialArtwork({
-    required this.frontDefault,
-    required this.frontShiny,
-  });
-}
-
-class Showdown {
-  final String? backDefault;
-  final String? backFemale;
-  final String? backShiny;
-  final String? backShinyFemale;
-  final String? frontDefault;
-  final String? frontFemale;
-  final String? frontShiny;
-  final String? frontShinyFemale;
-
-  Showdown({
-    required this.backDefault,
-    this.backFemale,
-    required this.backShiny,
-    this.backShinyFemale,
-    required this.frontDefault,
-    this.frontFemale,
-    required this.frontShiny,
-    this.frontShinyFemale,
+    required this.id,
+    this.homeFrontShiny,
+    this.homeFrontFemale,
+    this.homeFrontDefault,
+    this.showdownBackShiny,
+    this.showdownBackFemale,
+    this.showdownFrontShiny,
+    this.showdownBackDefault,
+    this.showdownFrontFemale,
+    this.homeFrontShinyFemale,
+    this.showdownFrontDefault,
+    this.dreamWorldFrontFemale,
+    this.dreamWorldFrontDefault,
+    this.showdownBackShinyFemale,
+    this.showdownFrontShinyFemale,
+    this.officialArtworkFrontShiny,
+    this.officialArtworkFrontDefault,
   });
 }

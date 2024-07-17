@@ -1,4 +1,4 @@
-import 'package:pokedex/features/home/domain/entity/pokemon_types.dart';
+import 'package:pokedex/core/models/type.dart';
 
 class Pokemon {
   final int id;

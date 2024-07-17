@@ -1,9 +1,0 @@
-part of 'home_bloc.dart';
-
-@freezed
-class HomeEvent with _$HomeEvent {
-  const factory HomeEvent.fetchPokemons({
-    int? limit,
-    int? offset,
-  }) = _FetchPokemons;
-}

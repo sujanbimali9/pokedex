@@ -24,7 +24,7 @@ class PokemonDescriptionHeader extends StatelessWidget {
           child: Container(
             height: screenSize.height * 0.45,
             color: PokemonTypeColor.getColorForType(
-                pokemon.pokemonTypes.first.type.name),
+                pokemon.pokemonTypes.first.name),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(

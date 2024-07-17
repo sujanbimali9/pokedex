@@ -1,9 +1,24 @@
 part of 'pokemon_detail_bloc.dart';
 
-@freezed
-class PokemonDetailState with _$PokemonDetailState {
-  const factory PokemonDetailState.initial() = _Initial;
-  const factory PokemonDetailState.loading() = _Loading;
-  const factory PokemonDetailState.loaded(PokemonDetail pokemon) = _Loaded;
-  const factory PokemonDetailState.error(String message) = _Error;
+@immutable
+sealed class PokemonDetailState {
+  const PokemonDetailState();
+}
+
+class PokemonDetailStateInitial extends PokemonDetailState {
+  const PokemonDetailStateInitial();
+}
+
+class PokemonDetailStateLoading extends PokemonDetailState {
+  const PokemonDetailStateLoading();
+}
+
+class PokemonDetailStateLoaded extends PokemonDetailState {
+  const PokemonDetailStateLoaded(this.pokemon);
+  final PokemonDetail pokemon;
+}
+
+class PokemonDetailStateError extends PokemonDetailState {
+  const PokemonDetailStateError(this.message);
+  final String message;
 }

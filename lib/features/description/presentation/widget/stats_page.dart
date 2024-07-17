@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/core/utils/color/type_color.dart';
-import 'package:pokedex/features/description/domain/entity/stats.dart';
-import 'package:pokedex/features/description/domain/entity/type.dart';
+import 'package:pokedex/features/description/domain/entity/stat.dart';
+import 'package:pokedex/core/models/type.dart';
 import 'package:pokedex/features/description/presentation/widget/pokemon_stats.dart';
 
 class StatsPage extends StatelessWidget {

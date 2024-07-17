@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/core/utils/color/type_color.dart';
 import 'package:pokedex/core/utils/functions/image_url.dart';
 import 'package:pokedex/custom_shape/poke_ball.dart';
+import 'package:pokedex/core/models/type.dart';
 import 'package:pokedex/features/description/domain/entity/evolution.dart';
-import 'package:pokedex/features/description/domain/entity/pokemon_detail.dart';
-import 'package:pokedex/features/description/domain/entity/type.dart';
+import 'package:pokedex/features/description/domain/entity/pokemon.dart';
 import 'package:pokedex/features/description/presentation/bloc/pokemon_detail_bloc.dart';
 import 'package:pokedex/features/description/presentation/widget/about_page.dart';
 import 'package:pokedex/features/description/presentation/widget/pokemon_description_header.dart';
@@ -25,9 +25,7 @@ class PokemonDetailScreen extends StatefulWidget {
 class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
   @override
   void initState() {
-    context
-        .read<PokemonDetailBloc>()
-        .add(PokemonDetailEvent.getPokemonDetails(widget.pokemon));
+    context.read<PokemonDetailBloc>().add(GetDetails(widget.pokemon));
     super.initState();
   }
 
@@ -55,7 +53,7 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
                         tabAlignment: TabAlignment.start,
                         isScrollable: true,
                         indicatorColor: PokemonTypeColor.getColorForType(
-                            widget.pokemon.pokemonTypes.first.type.name),
+                            widget.pokemon.pokemonTypes.first.name),
                         labelStyle: const TextStyle(
                             color: Colors.black, fontWeight: FontWeight.w500),
                         unselectedLabelStyle:
@@ -74,30 +72,31 @@ class _PokemonDetailScreenState extends State<PokemonDetailScreen> {
               ],
               body: BlocBuilder<PokemonDetailBloc, PokemonDetailState>(
                 buildWhen: (previous, current) {
-                  return current.maybeWhen(
-                      orElse: () => false,
-                      loaded: (_) => true,
-                      initial: () => true);
+                  if (current is PokemonDetailStateLoaded ||
+                      current is PokemonDetailStateLoading) {
+                    return true;
+                  }
+                  return false;
                 },
                 builder: (context, state) => TabBarView(
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
                     AboutPage(
-                      pokemonDetail:
-                          state.mapOrNull(loaded: (value) => value.pokemon),
+                      pokemonDetail: (state is PokemonDetailStateLoaded)
+                          ? state.pokemon
+                          : null,
                     ),
                     StatsPage(
-                      pokemonStats: state.mapOrNull(
-                          loaded: (value) => value.pokemon.stat),
-                      pokemonType: state.maybeMap(
-                        orElse: () => PokemonType(name: 'other', slot: 1),
-                        loaded: (value) => value.pokemon.type.first,
-                      ),
-                    ),
+                        pokemonStats: (state is PokemonDetailStateLoaded)
+                            ? state.pokemon.stats
+                            : null,
+                        pokemonType: (state is PokemonDetailStateLoaded)
+                            ? state.pokemon.types.first
+                            : PokemonType(name: 'other')),
                     EvolutionScreen(
-                      pokemonDetail:
-                          state.mapOrNull(loaded: (value) => value.pokemon),
-                    ),
+                        pokemonDetail: (state is PokemonDetailStateLoaded)
+                            ? state.pokemon
+                            : null),
                     const Column(),
                   ],
                 ),
@@ -145,7 +144,7 @@ class EvolutionScreen extends StatelessWidget {
   final PokemonDetail? pokemonDetail;
   @override
   Widget build(BuildContext context) {
-    final evolutions = pokemonDetail?.evolutionChain.evolutions;
+    final evolutions = pokemonDetail?.evolutionChain?.evolutions;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: CustomScrollView(
@@ -209,7 +208,7 @@ class EvolutionCard extends StatelessWidget {
               Text(
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                evolution.methods,
+                evolution.methods.join(', '),
                 style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.w500,

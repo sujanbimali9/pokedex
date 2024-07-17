@@ -1,10 +1,10 @@
 class Evolution {
   final String pokemon;
   final String nextEvolution;
-  final String methods;
+  final List<String> methods;
   final String trigger;
-  final String pokemonId;
-  final String nextEvolutionId;
+  final int pokemonId;
+  final int nextEvolutionId;
 
   Evolution({
     required this.pokemon,
@@ -13,13 +13,5 @@ class Evolution {
     required this.trigger,
     required this.pokemonId,
     required this.nextEvolutionId,
-  });
-}
-
-class EvolutionChain {
-  final List<Evolution> evolutions;
-
-  EvolutionChain({
-    required this.evolutions,
   });
 }

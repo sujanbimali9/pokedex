@@ -1,11 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/core/utils/color/type_color.dart';
-import 'package:pokedex/features/home/presentation/bloc/home_bloc.dart';
-import 'package:pokedex/custom_shape/poke_ball.dart';
-import 'package:pokedex/features/description/presentation/widget/pokemon_type_chip.dart';
-import 'package:pokedex/features/description/presentation/screen/pokemon_detail.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:pokedex/features/home/presentation/bloc/filter_cubit/filter_bloc_cubit.dart';
+import 'package:pokedex/features/home/presentation/bloc/home_bloc/home_bloc.dart';
+import 'package:pokedex/features/home/presentation/widgets/pokemon_list.dart';
+import 'package:pokedex/features/home/presentation/widgets/search_screen.dart';
+
+final generation = [
+  'All',
+  'Generation I',
+  'Generation II',
+  'Generation III',
+  'Generation IV',
+  'Generation V',
+  'Generation VI',
+  'Generation VII',
+  'Generation VIII',
+];
+const List<String> pokemonTypes = [
+  'Normal',
+  'Fire',
+  'Water',
+  'Grass',
+  'Electric',
+  'Ice',
+  'Poison',
+  'Ghost',
+  'Ground',
+  'Flying',
+  'Bug',
+  'Dark',
+  'Steel',
+  'Rock',
+  'Fairy',
+  'Dragon',
+  'Fighting',
+  'Psychic',
+];
+
+const List<String> status = [
+  'Normal',
+  'Mythical',
+  'Legendary',
+  'Evolution',
+  'NoEvolution',
+];
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +58,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     _scrollController = ScrollController(keepScrollOffset: true);
-    context.read<HomeBloc>().add(const HomeEvent.fetchPokemons());
+    context.read<HomeBloc>().add(FetchPokemons());
     _scrollController.addListener(_onScroll);
     super.initState();
   }
@@ -33,8 +72,10 @@ class _HomePageState extends State<HomePage> {
 
   void _onScroll() {
     if (_scrollController.position.pixels >=
-        _scrollController.position.maxScrollExtent * 0.8) {
-      context.read<HomeBloc>().add(const HomeEvent.fetchPokemons());
+            _scrollController.position.maxScrollExtent * 0.8 &&
+        _scrollController.position.userScrollDirection ==
+            ScrollDirection.reverse) {
+      context.read<HomeBloc>().add(FetchPokemons());
     }
   }
 
@@ -43,6 +84,134 @@ class _HomePageState extends State<HomePage> {
       (_) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(message)));
+      },
+    );
+  }
+
+  Future<void> showFilter() async {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final screenSize = MediaQuery.of(context).size;
+        return AlertDialog(
+          title: const Text('Filter'),
+          content: SizedBox(
+            height: screenSize.height * 0.7,
+            width: screenSize.width * 0.8,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Generation',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    children: generation
+                        .map(
+                          (e) => BlocBuilder<FilterCubit, FilterState>(
+                            builder: (context, state) {
+                              return Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: CustomFilterChip(
+                                  label: e,
+                                  isSelected: state.selectedFilterGenerations
+                                      .contains(e),
+                                  onPressed: (value) {
+                                    context
+                                        .read<FilterCubit>()
+                                        .selectFilterGenerations(value);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                        .toList(),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Types',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    children: pokemonTypes
+                        .map(
+                          (e) => BlocBuilder<FilterCubit, FilterState>(
+                            builder: (context, state) {
+                              return Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: CustomFilterChip(
+                                  label: e,
+                                  isSelected:
+                                      state.selectedFilterTypes.contains(e),
+                                  onPressed: (value) {
+                                    context
+                                        .read<FilterCubit>()
+                                        .selectFilterTypes(value);
+                                  },
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                        .toList(),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Others',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    children: status
+                        .map(
+                          (e) => BlocBuilder<FilterCubit, FilterState>(
+                            builder: (context, state) {
+                              return Padding(
+                                padding: const EdgeInsets.all(2),
+                                child: CustomFilterChip(
+                                  label: e,
+                                  onPressed: (value) {
+                                    context
+                                        .read<FilterCubit>()
+                                        .selectFilterStatus(value);
+                                  },
+                                  isSelected:
+                                      state.selectedFilterStatus.contains(e),
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<FilterCubit>().enableFilter();
+                context
+                    .read<HomeBloc>()
+                    .add(FetchPokemonsByFilter(isNew: true));
+                Navigator.of(context).pop();
+              },
+              child: const Text('Apply'),
+            ),
+          ],
+        );
       },
     );
   }
@@ -56,38 +225,60 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 17.0),
-                child: Text(
-                  'Pokedex',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
-                ),
+              Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 17.0),
+                    child: Text(
+                      'Pokedex',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const SearchScreen(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.search),
+                  ),
+                  IconButton(
+                    onPressed: () async {
+                      showFilter();
+                    },
+                    icon: const Icon(Icons.filter_alt_outlined),
+                  ),
+                ],
               ),
               Expanded(
-                child: BlocBuilder<HomeBloc, HomeState>(
-                  builder: (context, state) {
-                    return state.map(
-                      initial: (_) =>
-                          const Center(child: CircularProgressIndicator()),
-                      loading: (_) =>
-                          const Center(child: CircularProgressIndicator()),
-                      loaded: (state) {
-                        return PokemonLists(
-                            state: state, scrollController: _scrollController);
+                child: BlocSelector<FilterCubit, FilterState, bool>(
+                  selector: (state) {
+                    return state.filterEnabled;
+                  },
+                  builder: (context, filterEnabled) {
+                    return BlocConsumer<HomeBloc, HomeState>(
+                      listener: (context, state) {
+                        if (state.status.error) {
+                          showSnackbar(state.error!);
+                        }
                       },
-                      error: (state) {
-                        showSnackbar(state.message);
+                      builder: (context, state) {
+                        if (state.status.initial || state.status.loading) {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
                         return PokemonLists(
-                            state: state, scrollController: _scrollController);
-                      },
-                      fetchingMore: (state) {
-                        return PokemonLists(
-                          state: state,
+                          pokemons: filterEnabled
+                              ? state.filteredPokemons
+                              : state.pokemons,
                           scrollController: _scrollController,
-                          fetchingMore: true,
+                          fetchingMore: state.status.fetchingMore,
                         );
                       },
                     );
@@ -102,125 +293,33 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class PokemonLists extends StatelessWidget {
-  const PokemonLists({
-    required this.state,
-    super.key,
-    required this.scrollController,
-    this.fetchingMore = false,
-  });
-  final HomeState state;
-  final ScrollController scrollController;
-  final bool fetchingMore;
+class CustomFilterChip extends StatelessWidget {
+  const CustomFilterChip(
+      {super.key,
+      required this.isSelected,
+      required this.label,
+      this.selectedColor,
+      required this.onPressed});
+  final bool isSelected;
+  final String label;
+  final Color? selectedColor;
+  final void Function(String) onPressed;
 
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size.width;
-    return RefreshIndicator(
-      onRefresh: () {
-        context
-            .read<HomeBloc>()
-            .add(const HomeEvent.fetchPokemons(limit: 20, offset: 0));
-        return Future.delayed(const Duration(seconds: 1));
-      },
-      child: CustomScrollView(
-        controller: scrollController,
-        physics: const AlwaysScrollableScrollPhysics(),
-        slivers: [
-          SliverGrid.builder(
-            addAutomaticKeepAlives: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.6,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-            itemCount: state.pokemons.length,
-            itemBuilder: (context, index) {
-              if (index == state.pokemons.length) {
-                return const Center(child: CircularProgressIndicator());
-              }
-              return GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => PokemonDetailScreen(
-                        pokemon: state.pokemons[index],
-                      ),
-                    ),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: PokemonTypeColor.getColorForType(
-                        state.pokemons[index].pokemonTypes.first.type.name),
-                  ),
-                  child: Stack(
-                    alignment: Alignment.centerLeft,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              state.pokemons[index].name,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: 20),
-                            ),
-                            ...state.pokemons[index].pokemonTypes.map(
-                              (e) => PokmonTypeChip(
-                                type: e,
-                                margin: const EdgeInsets.only(top: 5),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        right: -5,
-                        bottom: -10,
-                        child: ClipPath(
-                          clipper: PokeBallClipper(),
-                          child: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.white.withOpacity(0.3)),
-                            child: Container(),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 2,
-                        bottom: 5,
-                        child: Hero(
-                          tag: 'pokemon-${state.pokemons[index].id}',
-                          child: CachedNetworkImage(
-                            imageUrl: state.pokemons[index].imageUrl,
-                            width: screenSize * 0.2,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              );
-            },
-          ),
-          if (fetchingMore)
-            const SliverToBoxAdapter(
-              child: Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Center(child: CircularProgressIndicator()),
-              ),
-            )
-        ],
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          color: isSelected ? selectedColor ?? Colors.blue : null,
+          border: Border.all(
+              color: isSelected ? selectedColor ?? Colors.blue : Colors.black)),
+      child: InkWell(
+        onTap: () => onPressed(label),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+          child: Text(label),
+        ),
       ),
     );
   }

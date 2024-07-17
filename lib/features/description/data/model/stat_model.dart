@@ -1,19 +1,12 @@
-import 'package:pokedex/core/utils/functions/captalize_first_letter.dart';
-import 'package:pokedex/features/description/domain/entity/stats.dart';
+import 'package:pokedex/features/description/domain/entity/stat.dart';
 
 class StatModel extends Stat {
-  StatModel({
-    required super.baseStat,
-    required super.effort,
-    required super.name,
-  });
+  StatModel({required super.name, required super.baseStat});
 
-  factory StatModel.fromJson(Map<String, dynamic> json) {
+  factory StatModel.fromJson(json) {
     return StatModel(
-        baseStat: json['base_stat'],
-        effort: json['effort'],
-        name: capitalize(
-          json['stat']['name'],
-        ));
+      name: json['name'] as String,
+      baseStat: json['baseStat'] as int,
+    );
   }
 }

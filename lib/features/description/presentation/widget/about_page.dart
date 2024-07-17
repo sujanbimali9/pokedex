@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/features/description/domain/entity/pokemon_detail.dart';
+import 'package:pokedex/features/description/domain/entity/pokemon.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key, this.pokemonDetail});
@@ -7,7 +7,7 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final description = pokemonDetail?.species.flavorTexts.toSet() ?? {};
+    final description = pokemonDetail?.flavourText ?? [];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: CustomScrollView(
@@ -18,24 +18,23 @@ class AboutPage extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 DetailValueAndData(
-                    value: 'Species', data: pokemonDetail?.species.genere),
+                    value: 'Species', data: pokemonDetail?.genre),
                 DetailValueAndData(
                     value: 'Height', data: pokemonDetail?.height),
                 DetailValueAndData(
                     value: 'Weight', data: pokemonDetail?.weight),
                 DetailValueAndData(
-                    value: 'Habitat', data: pokemonDetail?.species.habitat),
+                    value: 'Habitat', data: pokemonDetail?.habitat),
                 DetailValueAndData(
-                    value: 'GrowthRate',
-                    data: pokemonDetail?.species.growthRate),
+                    value: 'GrowthRate', data: pokemonDetail?.growthRate),
                 DetailValueAndData(
                     value: 'Abilities',
-                    data: pokemonDetail?.ability
-                        .map((e) => e.isHidden ? '${e.name}(hidden)' : e.name)
+                    data: pokemonDetail?.abilities
+                        ?.map((e) => e.isHidden ? '${e.name}(hidden)' : e.name)
                         .join(', ')),
                 DetailValueAndData(
                     value: 'Base Happiness',
-                    data: pokemonDetail?.species.baseHappiness),
+                    data: pokemonDetail?.baseHappiness),
                 const SizedBox(height: 15),
                 const Text(
                   'Breeding',
@@ -46,7 +45,7 @@ class AboutPage extends StatelessWidget {
                 ),
                 DetailValueAndData(
                     value: 'Egg Groups',
-                    data: pokemonDetail?.species.eggGroups.join(', ') ?? ''),
+                    data: pokemonDetail?.eggGroup?.join(', ') ?? ''),
                 const SizedBox(height: 15),
                 const Text(
                   'Description',
@@ -77,7 +76,7 @@ class AboutPage extends StatelessWidget {
                     ),
                     Flexible(
                       child: Text(
-                        description.elementAt(index),
+                        description[index],
                       ),
                     ),
                   ],

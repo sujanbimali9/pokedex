@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:fpdart/fpdart.dart';
 import 'package:pokedex/core/error/failure.dart';
 import 'package:pokedex/core/usecase/usecases.dart';
-import 'package:pokedex/features/description/domain/entity/pokemon_detail.dart';
+import 'package:pokedex/features/description/domain/entity/pokemon.dart';
 import 'package:pokedex/features/description/domain/repository/detail_repository.dart';
 import 'package:pokedex/features/home/domain/entity/pokemon_entity.dart';
 
