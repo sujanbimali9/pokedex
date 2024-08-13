@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/custom_shape/poke_ball.dart';
 import 'package:pokedex/features/home/domain/entity/pokemon_entity.dart';
 import 'package:pokedex/features/home/presentation/bloc/home_bloc/home_bloc.dart';
 import 'package:pokedex/features/home/presentation/widgets/pokemon_card.dart';
@@ -17,19 +18,23 @@ class PokemonLists extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final clipper = PokeBallClipper();
     return RefreshIndicator(
       onRefresh: () {
-        context.read<HomeBloc>().add(FetchPokemons(limit: 20, offset: 0));
+        context.read<HomeBloc>().add(FetchPokemons());
         return Future.delayed(const Duration(seconds: 1));
       },
       child: CustomScrollView(
         controller: scrollController,
-        physics: const AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(
+          parent: BouncingScrollPhysics(),
+        ),
         slivers: [
           SliverGrid.builder(
             addAutomaticKeepAlives: true,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 300,
+              // crossAxisCount: 2,
               childAspectRatio: 1.55,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
@@ -39,7 +44,8 @@ class PokemonLists extends StatelessWidget {
               if (index == pokemons.length) {
                 return const Center(child: CircularProgressIndicator());
               }
-              return PokemonCard(pokemons: pokemons, index: index);
+              return PokemonCard(
+                  pokemons: pokemons, index: index, clipper: clipper);
             },
           ),
           if (fetchingMore)

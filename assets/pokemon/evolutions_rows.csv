@@ -1,0 +1,485 @@
+id,pokemon,next_evolution,methods,trigger,pokemon_id,next_evolution_id
+1,bulbasaur,ivysaur,"[""Lvl: 16""]",level-up,1,2
+1,ivysaur,venusaur,"[""Lvl: 32""]",level-up,2,3
+2,charmander,charmeleon,"[""Lvl: 16""]",level-up,4,5
+2,charmeleon,charizard,"[""Lvl: 36""]",level-up,5,6
+3,squirtle,wartortle,"[""Lvl: 16""]",level-up,7,8
+3,wartortle,blastoise,"[""Lvl: 36""]",level-up,8,9
+4,caterpie,metapod,"[""Lvl: 7""]",level-up,10,11
+4,metapod,butterfree,"[""Lvl: 10""]",level-up,11,12
+5,weedle,kakuna,"[""Lvl: 7""]",level-up,13,14
+5,kakuna,beedrill,"[""Lvl: 10""]",level-up,14,15
+6,pidgey,pidgeotto,"[""Lvl: 18""]",level-up,16,17
+6,pidgeotto,pidgeot,"[""Lvl: 36""]",level-up,17,18
+7,rattata,raticate,"[""Lvl: 20""]",level-up,19,20
+8,spearow,fearow,"[""Lvl: 20""]",level-up,21,22
+9,ekans,arbok,"[""Lvl: 22""]",level-up,23,24
+10,pichu,pikachu,"[""Happiness: 220""]",level-up,172,25
+10,pikachu,raichu,"[""Item: thunder-stone""]",use-item,25,26
+11,sandshrew,sandslash,"[""Lvl: 22""]",level-up,27,28
+12,nidoran-f,nidorina,"[""Lvl: 16""]",level-up,29,30
+12,nidorina,nidoqueen,"[""Item: moon-stone""]",use-item,30,31
+13,nidoran-m,nidorino,"[""Lvl: 16""]",level-up,32,33
+13,nidorino,nidoking,"[""Item: moon-stone""]",use-item,33,34
+14,cleffa,clefairy,"[""Happiness: 160""]",level-up,173,35
+14,clefairy,clefable,"[""Item: moon-stone""]",use-item,35,36
+15,vulpix,ninetales,"[""Item: fire-stone""]",use-item,37,38
+16,igglybuff,jigglypuff,"[""Happiness: 160""]",level-up,174,39
+16,jigglypuff,wigglytuff,"[""Item: moon-stone""]",use-item,39,40
+17,zubat,golbat,"[""Lvl: 22""]",level-up,41,42
+17,golbat,crobat,"[""Happiness: 160""]",level-up,42,169
+18,oddish,gloom,"[""Lvl: 21""]",level-up,43,44
+18,gloom,vileplume,"[""Item: leaf-stone""]",use-item,44,45
+18,gloom,bellossom,"[""Item: sun-stone""]",use-item,44,182
+19,paras,parasect,"[""Lvl: 24""]",level-up,46,47
+20,venonat,venomoth,"[""Lvl: 31""]",level-up,48,49
+21,diglett,dugtrio,"[""Lvl: 26""]",level-up,50,51
+22,meowth,persian,"[""Lvl: 28""]",level-up,52,53
+22,meowth,perrserker,"[""Lvl: 28""]",level-up,52,863
+23,psyduck,golduck,"[""Lvl: 33""]",level-up,54,55
+24,mankey,primeape,"[""Lvl: 28""]",level-up,56,57
+24,primeape,annihilape,[],other,57,979
+25,growlithe,arcanine,"[""Item: fire-stone""]",use-item,58,59
+26,poliwag,poliwhirl,"[""Lvl: 25""]",level-up,60,61
+26,poliwhirl,poliwrath,"[""Item: water-stone""]",use-item,61,62
+26,poliwhirl,politoed,"[""Held Item: kings-rock""]",trade,61,186
+27,abra,kadabra,"[""Lvl: 16""]",level-up,63,64
+27,kadabra,alakazam,[],trade,64,65
+28,machop,machoke,"[""Lvl: 28""]",level-up,66,67
+28,machoke,machamp,[],trade,67,68
+29,bellsprout,weepinbell,"[""Lvl: 21""]",level-up,69,70
+29,weepinbell,victreebel,"[""Item: leaf-stone""]",use-item,70,71
+30,tentacool,tentacruel,"[""Lvl: 30""]",level-up,72,73
+31,geodude,graveler,"[""Lvl: 25""]",level-up,74,75
+31,graveler,golem,[],trade,75,76
+32,ponyta,rapidash,"[""Lvl: 40""]",level-up,77,78
+33,slowpoke,slowbro,"[""Lvl: 37""]",level-up,79,80
+33,slowpoke,slowking,"[""Held Item: kings-rock""]",trade,79,199
+34,magnemite,magneton,"[""Lvl: 30""]",level-up,81,82
+34,magneton,magnezone,"[""Location: mt-coronet""]",level-up,82,462
+35,farfetchd,sirfetchd,[],three-critical-hits,83,865
+36,doduo,dodrio,"[""Lvl: 31""]",level-up,84,85
+37,seel,dewgong,"[""Lvl: 34""]",level-up,86,87
+38,grimer,muk,"[""Lvl: 38""]",level-up,88,89
+39,shellder,cloyster,"[""Item: water-stone""]",use-item,90,91
+40,gastly,haunter,"[""Lvl: 25""]",level-up,92,93
+40,haunter,gengar,[],trade,93,94
+41,onix,steelix,"[""Held Item: metal-coat""]",trade,95,208
+42,drowzee,hypno,"[""Lvl: 26""]",level-up,96,97
+43,krabby,kingler,"[""Lvl: 28""]",level-up,98,99
+44,voltorb,electrode,"[""Lvl: 30""]",level-up,100,101
+45,exeggcute,exeggutor,"[""Item: leaf-stone""]",use-item,102,103
+46,cubone,marowak,"[""Lvl: 28""]",level-up,104,105
+47,tyrogue,hitmonlee,"[""Lvl: 20"",""Physical Stats: 1""]",level-up,236,106
+47,tyrogue,hitmonchan,"[""Lvl: 20"",""Physical Stats: -1""]",level-up,236,107
+47,tyrogue,hitmontop,"[""Lvl: 20"",""Physical Stats: 0""]",level-up,236,237
+48,lickitung,lickilicky,"[""Known Move: rollout""]",level-up,108,463
+49,koffing,weezing,"[""Lvl: 35""]",level-up,109,110
+50,rhyhorn,rhydon,"[""Lvl: 42""]",level-up,111,112
+50,rhydon,rhyperior,"[""Held Item: protector""]",trade,112,464
+51,happiny,chansey,"[""Time of Day: day"",""Held Item: oval-stone""]",level-up,440,113
+51,chansey,blissey,"[""Happiness: 160""]",level-up,113,242
+52,tangela,tangrowth,"[""Known Move: ancient-power""]",level-up,114,465
+54,horsea,seadra,"[""Lvl: 32""]",level-up,116,117
+54,seadra,kingdra,"[""Held Item: dragon-scale""]",trade,117,230
+55,goldeen,seaking,"[""Lvl: 33""]",level-up,118,119
+56,staryu,starmie,"[""Item: water-stone""]",use-item,120,121
+57,mime-jr,mr-mime,"[""Known Move: mimic""]",level-up,439,122
+57,mr-mime,mr-rime,"[""Lvl: 42""]",level-up,122,866
+58,scyther,scizor,"[""Held Item: metal-coat""]",trade,123,212
+58,scyther,kleavor,"[""Item: black-augurite""]",use-item,123,900
+59,smoochum,jynx,"[""Lvl: 30""]",level-up,238,124
+60,elekid,electabuzz,"[""Lvl: 30""]",level-up,239,125
+60,electabuzz,electivire,"[""Held Item: electirizer""]",trade,125,466
+61,magby,magmar,"[""Lvl: 30""]",level-up,240,126
+61,magmar,magmortar,"[""Held Item: magmarizer""]",trade,126,467
+64,magikarp,gyarados,"[""Lvl: 20""]",level-up,129,130
+67,eevee,vaporeon,"[""Item: water-stone""]",use-item,133,134
+67,eevee,jolteon,"[""Item: thunder-stone""]",use-item,133,135
+67,eevee,flareon,"[""Item: fire-stone""]",use-item,133,136
+67,eevee,espeon,"[""Happiness: 160"",""Time of Day: day""]",level-up,133,196
+67,eevee,umbreon,"[""Happiness: 160"",""Time of Day: night""]",level-up,133,197
+67,eevee,leafeon,"[""Location: eterna-forest""]",level-up,133,470
+67,eevee,glaceon,"[""Location: sinnoh-route-217""]",level-up,133,471
+67,eevee,sylveon,"[""Affection: 2"",""Known Move Type: fairy""]",level-up,133,700
+68,porygon,porygon2,"[""Held Item: up-grade""]",trade,137,233
+68,porygon2,porygon-z,"[""Held Item: dubious-disc""]",trade,233,474
+69,omanyte,omastar,"[""Lvl: 40""]",level-up,138,139
+70,kabuto,kabutops,"[""Lvl: 40""]",level-up,140,141
+72,munchlax,snorlax,"[""Happiness: 160""]",level-up,446,143
+76,dratini,dragonair,"[""Lvl: 30""]",level-up,147,148
+76,dragonair,dragonite,"[""Lvl: 55""]",level-up,148,149
+79,chikorita,bayleef,"[""Lvl: 16""]",level-up,152,153
+79,bayleef,meganium,"[""Lvl: 32""]",level-up,153,154
+80,cyndaquil,quilava,"[""Lvl: 14""]",level-up,155,156
+80,quilava,typhlosion,"[""Lvl: 36""]",level-up,156,157
+81,totodile,croconaw,"[""Lvl: 18""]",level-up,158,159
+81,croconaw,feraligatr,"[""Lvl: 30""]",level-up,159,160
+82,sentret,furret,"[""Lvl: 15""]",level-up,161,162
+83,hoothoot,noctowl,"[""Lvl: 20""]",level-up,163,164
+84,ledyba,ledian,"[""Lvl: 18""]",level-up,165,166
+85,spinarak,ariados,"[""Lvl: 22""]",level-up,167,168
+86,chinchou,lanturn,"[""Lvl: 27""]",level-up,170,171
+87,togepi,togetic,"[""Happiness: 160""]",level-up,175,176
+87,togetic,togekiss,"[""Item: shiny-stone""]",use-item,176,468
+88,natu,xatu,"[""Lvl: 25""]",level-up,177,178
+89,mareep,flaaffy,"[""Lvl: 15""]",level-up,179,180
+89,flaaffy,ampharos,"[""Lvl: 30""]",level-up,180,181
+90,azurill,marill,"[""Happiness: 160""]",level-up,298,183
+90,marill,azumarill,"[""Lvl: 18""]",level-up,183,184
+91,bonsly,sudowoodo,"[""Known Move: mimic""]",level-up,438,185
+92,hoppip,skiploom,"[""Lvl: 18""]",level-up,187,188
+92,skiploom,jumpluff,"[""Lvl: 27""]",level-up,188,189
+93,aipom,ambipom,"[""Known Move: double-hit""]",level-up,190,424
+94,sunkern,sunflora,"[""Item: sun-stone""]",use-item,191,192
+95,yanma,yanmega,"[""Known Move: ancient-power""]",level-up,193,469
+96,wooper,quagsire,"[""Lvl: 20""]",level-up,194,195
+96,wooper,clodsire,"[""Lvl: 20""]",level-up,194,980
+97,murkrow,honchkrow,"[""Item: dusk-stone""]",use-item,198,430
+98,misdreavus,mismagius,"[""Item: dusk-stone""]",use-item,200,429
+100,wynaut,wobbuffet,"[""Lvl: 15""]",level-up,360,202
+101,girafarig,farigiraf,"[""Known Move: twin-beam""]",level-up,203,981
+102,pineco,forretress,"[""Lvl: 31""]",level-up,204,205
+103,dunsparce,dudunsparce,"[""Known Move: hyper-drill""]",level-up,206,982
+104,gligar,gliscor,"[""Time of Day: night"",""Held Item: razor-fang""]",level-up,207,472
+105,snubbull,granbull,"[""Lvl: 23""]",level-up,209,210
+106,qwilfish,overqwil,"[""Known Move: barb-barrage""]",strong-style-move,211,904
+109,sneasel,weavile,"[""Time of Day: night"",""Held Item: razor-claw""]",level-up,215,461
+109,sneasel,sneasler,"[""Time of Day: day"",""Held Item: razor-claw""]",level-up,215,903
+110,teddiursa,ursaring,"[""Lvl: 30""]",level-up,216,217
+110,ursaring,ursaluna,"[""Time of Day: full-moon"",""Item: peat-block""]",use-item,217,901
+111,slugma,magcargo,"[""Lvl: 38""]",level-up,218,219
+112,swinub,piloswine,"[""Lvl: 33""]",level-up,220,221
+112,piloswine,mamoswine,"[""Known Move: ancient-power""]",level-up,221,473
+113,corsola,cursola,"[""Lvl: 38""]",level-up,222,864
+114,remoraid,octillery,"[""Lvl: 25""]",level-up,223,224
+116,mantyke,mantine,"[""Party Species: remoraid""]",level-up,458,226
+118,houndour,houndoom,"[""Lvl: 24""]",level-up,228,229
+119,phanpy,donphan,"[""Lvl: 25""]",level-up,231,232
+120,stantler,wyrdeer,"[""Known Move: psyshield-bash""]",agile-style-move,234,899
+126,larvitar,pupitar,"[""Lvl: 30""]",level-up,246,247
+126,pupitar,tyranitar,"[""Lvl: 55""]",level-up,247,248
+130,treecko,grovyle,"[""Lvl: 16""]",level-up,252,253
+130,grovyle,sceptile,"[""Lvl: 36""]",level-up,253,254
+131,torchic,combusken,"[""Lvl: 16""]",level-up,255,256
+131,combusken,blaziken,"[""Lvl: 36""]",level-up,256,257
+132,mudkip,marshtomp,"[""Lvl: 16""]",level-up,258,259
+132,marshtomp,swampert,"[""Lvl: 36""]",level-up,259,260
+133,poochyena,mightyena,"[""Lvl: 18""]",level-up,261,262
+134,zigzagoon,linoone,"[""Lvl: 20""]",level-up,263,264
+134,linoone,obstagoon,"[""Lvl: 35"",""Time of Day: night""]",level-up,264,862
+135,wurmple,silcoon,"[""Lvl: 7""]",level-up,265,266
+135,silcoon,beautifly,"[""Lvl: 10""]",level-up,266,267
+135,wurmple,cascoon,"[""Lvl: 7""]",level-up,265,268
+135,cascoon,dustox,"[""Lvl: 10""]",level-up,268,269
+136,lotad,lombre,"[""Lvl: 14""]",level-up,270,271
+136,lombre,ludicolo,"[""Item: water-stone""]",use-item,271,272
+137,seedot,nuzleaf,"[""Lvl: 14""]",level-up,273,274
+137,nuzleaf,shiftry,"[""Item: leaf-stone""]",use-item,274,275
+138,taillow,swellow,"[""Lvl: 22""]",level-up,276,277
+139,wingull,pelipper,"[""Lvl: 25""]",level-up,278,279
+140,ralts,kirlia,"[""Lvl: 20""]",level-up,280,281
+140,kirlia,gardevoir,"[""Lvl: 30""]",level-up,281,282
+140,kirlia,gallade,"[""Gender: 2"",""Item: dawn-stone""]",use-item,281,475
+141,surskit,masquerain,"[""Lvl: 22""]",level-up,283,284
+142,shroomish,breloom,"[""Lvl: 23""]",level-up,285,286
+143,slakoth,vigoroth,"[""Lvl: 18""]",level-up,287,288
+143,vigoroth,slaking,"[""Lvl: 36""]",level-up,288,289
+144,nincada,ninjask,"[""Lvl: 20""]",level-up,290,291
+144,nincada,shedinja,[],shed,290,292
+145,whismur,loudred,"[""Lvl: 20""]",level-up,293,294
+145,loudred,exploud,"[""Lvl: 40""]",level-up,294,295
+146,makuhita,hariyama,"[""Lvl: 24""]",level-up,296,297
+147,nosepass,probopass,"[""Location: mt-coronet""]",level-up,299,476
+148,skitty,delcatty,"[""Item: moon-stone""]",use-item,300,301
+151,aron,lairon,"[""Lvl: 32""]",level-up,304,305
+151,lairon,aggron,"[""Lvl: 42""]",level-up,305,306
+152,meditite,medicham,"[""Lvl: 37""]",level-up,307,308
+153,electrike,manectric,"[""Lvl: 26""]",level-up,309,310
+158,budew,roselia,"[""Happiness: 160"",""Time of Day: day""]",level-up,406,315
+158,roselia,roserade,"[""Item: shiny-stone""]",use-item,315,407
+159,gulpin,swalot,"[""Lvl: 26""]",level-up,316,317
+160,carvanha,sharpedo,"[""Lvl: 30""]",level-up,318,319
+161,wailmer,wailord,"[""Lvl: 40""]",level-up,320,321
+162,numel,camerupt,"[""Lvl: 33""]",level-up,322,323
+164,spoink,grumpig,"[""Lvl: 32""]",level-up,325,326
+166,trapinch,vibrava,"[""Lvl: 35""]",level-up,328,329
+166,vibrava,flygon,"[""Lvl: 45""]",level-up,329,330
+167,cacnea,cacturne,"[""Lvl: 32""]",level-up,331,332
+168,swablu,altaria,"[""Lvl: 35""]",level-up,333,334
+173,barboach,whiscash,"[""Lvl: 30""]",level-up,339,340
+174,corphish,crawdaunt,"[""Lvl: 30""]",level-up,341,342
+175,baltoy,claydol,"[""Lvl: 36""]",level-up,343,344
+176,lileep,cradily,"[""Lvl: 40""]",level-up,345,346
+177,anorith,armaldo,"[""Lvl: 40""]",level-up,347,348
+178,feebas,milotic,"[""Beauty: 171""]",level-up,349,350
+181,shuppet,banette,"[""Lvl: 37""]",level-up,353,354
+182,duskull,dusclops,"[""Lvl: 37""]",level-up,355,356
+182,dusclops,dusknoir,"[""Held Item: reaper-cloth""]",trade,356,477
+184,chingling,chimecho,"[""Happiness: 220"",""Time of Day: night""]",level-up,433,358
+186,snorunt,glalie,"[""Lvl: 42""]",level-up,361,362
+186,snorunt,froslass,"[""Gender: 1"",""Item: dawn-stone""]",use-item,361,478
+187,spheal,sealeo,"[""Lvl: 32""]",level-up,363,364
+187,sealeo,walrein,"[""Lvl: 44""]",level-up,364,365
+188,clamperl,huntail,"[""Held Item: deep-sea-tooth""]",trade,366,367
+188,clamperl,gorebyss,"[""Held Item: deep-sea-scale""]",trade,366,368
+191,bagon,shelgon,"[""Lvl: 30""]",level-up,371,372
+191,shelgon,salamence,"[""Lvl: 50""]",level-up,372,373
+192,beldum,metang,"[""Lvl: 20""]",level-up,374,375
+192,metang,metagross,"[""Lvl: 45""]",level-up,375,376
+203,turtwig,grotle,"[""Lvl: 18""]",level-up,387,388
+203,grotle,torterra,"[""Lvl: 32""]",level-up,388,389
+204,chimchar,monferno,"[""Lvl: 14""]",level-up,390,391
+204,monferno,infernape,"[""Lvl: 36""]",level-up,391,392
+205,piplup,prinplup,"[""Lvl: 16""]",level-up,393,394
+205,prinplup,empoleon,"[""Lvl: 36""]",level-up,394,395
+206,starly,staravia,"[""Lvl: 14""]",level-up,396,397
+206,staravia,staraptor,"[""Lvl: 34""]",level-up,397,398
+207,bidoof,bibarel,"[""Lvl: 15""]",level-up,399,400
+208,kricketot,kricketune,"[""Lvl: 10""]",level-up,401,402
+209,shinx,luxio,"[""Lvl: 15""]",level-up,403,404
+209,luxio,luxray,"[""Lvl: 30""]",level-up,404,405
+211,cranidos,rampardos,"[""Lvl: 30""]",level-up,408,409
+212,shieldon,bastiodon,"[""Lvl: 30""]",level-up,410,411
+213,burmy,wormadam,"[""Gender: 1"",""Lvl: 20""]",level-up,412,413
+213,burmy,mothim,"[""Gender: 2"",""Lvl: 20""]",level-up,412,414
+214,combee,vespiquen,"[""Gender: 1"",""Lvl: 21""]",level-up,415,416
+216,buizel,floatzel,"[""Lvl: 26""]",level-up,418,419
+217,cherubi,cherrim,"[""Lvl: 25""]",level-up,420,421
+218,shellos,gastrodon,"[""Lvl: 30""]",level-up,422,423
+219,drifloon,drifblim,"[""Lvl: 28""]",level-up,425,426
+220,buneary,lopunny,"[""Happiness: 160""]",level-up,427,428
+221,glameow,purugly,"[""Lvl: 38""]",level-up,431,432
+223,stunky,skuntank,"[""Lvl: 34""]",level-up,434,435
+224,bronzor,bronzong,"[""Lvl: 33""]",level-up,436,437
+230,gible,gabite,"[""Lvl: 24""]",level-up,443,444
+230,gabite,garchomp,"[""Lvl: 48""]",level-up,444,445
+232,riolu,lucario,"[""Happiness: 160"",""Time of Day: day""]",level-up,447,448
+233,hippopotas,hippowdon,"[""Lvl: 34""]",level-up,449,450
+234,skorupi,drapion,"[""Lvl: 40""]",level-up,451,452
+235,croagunk,toxicroak,"[""Lvl: 37""]",level-up,453,454
+237,finneon,lumineon,"[""Lvl: 31""]",level-up,456,457
+239,snover,abomasnow,"[""Lvl: 40""]",level-up,459,460
+250,phione,manaphy,[],,489,490
+256,snivy,servine,"[""Lvl: 17""]",level-up,495,496
+256,servine,serperior,"[""Lvl: 36""]",level-up,496,497
+257,tepig,pignite,"[""Lvl: 17""]",level-up,498,499
+257,pignite,emboar,"[""Lvl: 36""]",level-up,499,500
+258,oshawott,dewott,"[""Lvl: 17""]",level-up,501,502
+258,dewott,samurott,"[""Lvl: 36""]",level-up,502,503
+259,patrat,watchog,"[""Lvl: 20""]",level-up,504,505
+260,lillipup,herdier,"[""Lvl: 16""]",level-up,506,507
+260,herdier,stoutland,"[""Lvl: 32""]",level-up,507,508
+261,purrloin,liepard,"[""Lvl: 20""]",level-up,509,510
+262,pansage,simisage,"[""Item: leaf-stone""]",use-item,511,512
+263,pansear,simisear,"[""Item: fire-stone""]",use-item,513,514
+264,panpour,simipour,"[""Item: water-stone""]",use-item,515,516
+265,munna,musharna,"[""Item: moon-stone""]",use-item,517,518
+266,pidove,tranquill,"[""Lvl: 21""]",level-up,519,520
+266,tranquill,unfezant,"[""Lvl: 32""]",level-up,520,521
+267,blitzle,zebstrika,"[""Lvl: 27""]",level-up,522,523
+268,roggenrola,boldore,"[""Lvl: 25""]",level-up,524,525
+268,boldore,gigalith,[],trade,525,526
+269,woobat,swoobat,"[""Happiness: 160""]",level-up,527,528
+270,drilbur,excadrill,"[""Lvl: 31""]",level-up,529,530
+272,timburr,gurdurr,"[""Lvl: 25""]",level-up,532,533
+272,gurdurr,conkeldurr,[],trade,533,534
+273,tympole,palpitoad,"[""Lvl: 25""]",level-up,535,536
+273,palpitoad,seismitoad,"[""Lvl: 36""]",level-up,536,537
+276,sewaddle,swadloon,"[""Lvl: 20""]",level-up,540,541
+276,swadloon,leavanny,"[""Happiness: 220""]",level-up,541,542
+277,venipede,whirlipede,"[""Lvl: 22""]",level-up,543,544
+277,whirlipede,scolipede,"[""Lvl: 30""]",level-up,544,545
+278,cottonee,whimsicott,"[""Item: sun-stone""]",use-item,546,547
+279,petilil,lilligant,"[""Item: sun-stone""]",use-item,548,549
+280,basculin,basculegion,[],recoil-damage,550,902
+281,sandile,krokorok,"[""Lvl: 29""]",level-up,551,552
+281,krokorok,krookodile,"[""Lvl: 40""]",level-up,552,553
+282,darumaka,darmanitan,"[""Lvl: 35""]",level-up,554,555
+284,dwebble,crustle,"[""Lvl: 34""]",level-up,557,558
+285,scraggy,scrafty,"[""Lvl: 39""]",level-up,559,560
+287,yamask,cofagrigus,"[""Lvl: 34""]",level-up,562,563
+287,yamask,runerigus,[],take-damage,562,867
+288,tirtouga,carracosta,"[""Lvl: 37""]",level-up,564,565
+289,archen,archeops,"[""Lvl: 37""]",level-up,566,567
+290,trubbish,garbodor,"[""Lvl: 36""]",level-up,568,569
+291,zorua,zoroark,"[""Lvl: 30""]",level-up,570,571
+292,minccino,cinccino,"[""Item: shiny-stone""]",use-item,572,573
+293,gothita,gothorita,"[""Lvl: 32""]",level-up,574,575
+293,gothorita,gothitelle,"[""Lvl: 41""]",level-up,575,576
+294,solosis,duosion,"[""Lvl: 32""]",level-up,577,578
+294,duosion,reuniclus,"[""Lvl: 41""]",level-up,578,579
+295,ducklett,swanna,"[""Lvl: 35""]",level-up,580,581
+296,vanillite,vanillish,"[""Lvl: 35""]",level-up,582,583
+296,vanillish,vanilluxe,"[""Lvl: 47""]",level-up,583,584
+297,deerling,sawsbuck,"[""Lvl: 34""]",level-up,585,586
+299,karrablast,escavalier,"[""Trade Species: shelmet""]",trade,588,589
+300,foongus,amoonguss,"[""Lvl: 39""]",level-up,590,591
+301,frillish,jellicent,"[""Lvl: 40""]",level-up,592,593
+303,joltik,galvantula,"[""Lvl: 36""]",level-up,595,596
+304,ferroseed,ferrothorn,"[""Lvl: 40""]",level-up,597,598
+305,klink,klang,"[""Lvl: 38""]",level-up,599,600
+305,klang,klinklang,"[""Lvl: 49""]",level-up,600,601
+306,tynamo,eelektrik,"[""Lvl: 39""]",level-up,602,603
+306,eelektrik,eelektross,"[""Item: thunder-stone""]",use-item,603,604
+307,elgyem,beheeyem,"[""Lvl: 42""]",level-up,605,606
+308,litwick,lampent,"[""Lvl: 41""]",level-up,607,608
+308,lampent,chandelure,"[""Item: dusk-stone""]",use-item,608,609
+309,axew,fraxure,"[""Lvl: 38""]",level-up,610,611
+309,fraxure,haxorus,"[""Lvl: 48""]",level-up,611,612
+310,cubchoo,beartic,"[""Lvl: 37""]",level-up,613,614
+312,shelmet,accelgor,"[""Trade Species: karrablast""]",trade,616,617
+314,mienfoo,mienshao,"[""Lvl: 50""]",level-up,619,620
+316,golett,golurk,"[""Lvl: 43""]",level-up,622,623
+317,pawniard,bisharp,"[""Lvl: 52""]",level-up,624,625
+317,bisharp,kingambit,[],other,625,983
+319,rufflet,braviary,"[""Lvl: 54""]",level-up,627,628
+320,vullaby,mandibuzz,"[""Lvl: 54""]",level-up,629,630
+323,deino,zweilous,"[""Lvl: 50""]",level-up,633,634
+323,zweilous,hydreigon,"[""Lvl: 64""]",level-up,634,635
+324,larvesta,volcarona,"[""Lvl: 59""]",level-up,636,637
+337,chespin,quilladin,"[""Lvl: 16""]",level-up,650,651
+337,quilladin,chesnaught,"[""Lvl: 36""]",level-up,651,652
+338,fennekin,braixen,"[""Lvl: 16""]",level-up,653,654
+338,braixen,delphox,"[""Lvl: 36""]",level-up,654,655
+339,froakie,frogadier,"[""Lvl: 16""]",level-up,656,657
+339,frogadier,greninja,"[""Lvl: 36""]",level-up,657,658
+340,bunnelby,diggersby,"[""Lvl: 20""]",level-up,659,660
+341,fletchling,fletchinder,"[""Lvl: 17""]",level-up,661,662
+341,fletchinder,talonflame,"[""Lvl: 35""]",level-up,662,663
+342,scatterbug,spewpa,"[""Lvl: 9""]",level-up,664,665
+342,spewpa,vivillon,"[""Lvl: 12""]",level-up,665,666
+343,litleo,pyroar,"[""Lvl: 35""]",level-up,667,668
+344,flabebe,floette,"[""Lvl: 19""]",level-up,669,670
+344,floette,florges,"[""Item: shiny-stone""]",use-item,670,671
+345,skiddo,gogoat,"[""Lvl: 32""]",level-up,672,673
+346,pancham,pangoro,"[""Lvl: 32"",""Party Type: dark""]",level-up,674,675
+348,espurr,meowstic,"[""Lvl: 25""]",level-up,677,678
+349,honedge,doublade,"[""Lvl: 35""]",level-up,679,680
+349,doublade,aegislash,"[""Item: dusk-stone""]",use-item,680,681
+350,spritzee,aromatisse,"[""Held Item: sachet""]",trade,682,683
+351,swirlix,slurpuff,"[""Held Item: whipped-dream""]",trade,684,685
+352,inkay,malamar,"[""Lvl: 30""]",level-up,686,687
+353,binacle,barbaracle,"[""Lvl: 39""]",level-up,688,689
+354,skrelp,dragalge,"[""Lvl: 48""]",level-up,690,691
+355,clauncher,clawitzer,"[""Lvl: 37""]",level-up,692,693
+356,helioptile,heliolisk,"[""Item: sun-stone""]",use-item,694,695
+357,tyrunt,tyrantrum,"[""Lvl: 39"",""Time of Day: day""]",level-up,696,697
+358,amaura,aurorus,"[""Lvl: 39"",""Time of Day: night""]",level-up,698,699
+362,goomy,sliggoo,"[""Lvl: 40""]",level-up,704,705
+362,sliggoo,goodra,"[""Lvl: 50""]",level-up,705,706
+364,phantump,trevenant,[],trade,708,709
+365,pumpkaboo,gourgeist,[],trade,710,711
+366,bergmite,avalugg,"[""Lvl: 37""]",level-up,712,713
+367,noibat,noivern,"[""Lvl: 48""]",level-up,714,715
+374,rowlet,dartrix,"[""Lvl: 17""]",level-up,722,723
+374,dartrix,decidueye,"[""Lvl: 34""]",level-up,723,724
+375,litten,torracat,"[""Lvl: 17""]",level-up,725,726
+375,torracat,incineroar,"[""Lvl: 34""]",level-up,726,727
+376,popplio,brionne,"[""Lvl: 17""]",level-up,728,729
+376,brionne,primarina,"[""Lvl: 34""]",level-up,729,730
+377,pikipek,trumbeak,"[""Lvl: 14""]",level-up,731,732
+377,trumbeak,toucannon,"[""Lvl: 28""]",level-up,732,733
+378,yungoos,gumshoos,"[""Lvl: 20"",""Time of Day: day""]",level-up,734,735
+379,grubbin,charjabug,"[""Lvl: 20""]",level-up,736,737
+379,charjabug,vikavolt,[],level-up,737,738
+380,crabrawler,crabominable,"[""Location: mount-lanakila""]",level-up,739,740
+382,cutiefly,ribombee,"[""Lvl: 25""]",level-up,742,743
+383,rockruff,lycanroc,"[""Lvl: 25"",""Time of Day: day""]",level-up,744,745
+385,mareanie,toxapex,"[""Lvl: 38""]",level-up,747,748
+386,mudbray,mudsdale,"[""Lvl: 30""]",level-up,749,750
+387,dewpider,araquanid,"[""Lvl: 22""]",level-up,751,752
+388,fomantis,lurantis,"[""Lvl: 34"",""Time of Day: day""]",level-up,753,754
+389,morelull,shiinotic,"[""Lvl: 24""]",level-up,755,756
+390,salandit,salazzle,"[""Gender: 1"",""Lvl: 33""]",level-up,757,758
+391,stufful,bewear,"[""Lvl: 27""]",level-up,759,760
+392,bounsweet,steenee,"[""Lvl: 18""]",level-up,761,762
+392,steenee,tsareena,"[""Known Move: stomp""]",level-up,762,763
+396,wimpod,golisopod,"[""Lvl: 30""]",level-up,767,768
+397,sandygast,palossand,"[""Lvl: 42""]",level-up,769,770
+399,type-null,silvally,"[""Happiness: 160""]",level-up,772,773
+408,jangmo-o,hakamo-o,"[""Lvl: 35""]",level-up,782,783
+408,hakamo-o,kommo-o,"[""Lvl: 45""]",level-up,783,784
+413,cosmog,cosmoem,"[""Lvl: 43""]",level-up,789,790
+413,cosmoem,solgaleo,"[""Lvl: 53""]",level-up,790,791
+413,cosmoem,lunala,"[""Lvl: 53""]",level-up,790,792
+424,poipole,naganadel,"[""Known Move: dragon-pulse""]",level-up,803,804
+430,grookey,thwackey,"[""Lvl: 16""]",level-up,810,811
+430,thwackey,rillaboom,"[""Lvl: 35""]",level-up,811,812
+431,scorbunny,raboot,"[""Lvl: 16""]",level-up,813,814
+431,raboot,cinderace,"[""Lvl: 35""]",level-up,814,815
+432,sobble,drizzile,"[""Lvl: 16""]",level-up,816,817
+432,drizzile,inteleon,"[""Lvl: 35""]",level-up,817,818
+433,skwovet,greedent,"[""Lvl: 24""]",level-up,819,820
+434,rookidee,corvisquire,"[""Lvl: 18""]",level-up,821,822
+434,corvisquire,corviknight,"[""Lvl: 38""]",level-up,822,823
+435,blipbug,dottler,"[""Lvl: 10""]",level-up,824,825
+435,dottler,orbeetle,"[""Lvl: 30""]",level-up,825,826
+436,nickit,thievul,"[""Lvl: 18""]",level-up,827,828
+437,gossifleur,eldegoss,"[""Lvl: 20""]",level-up,829,830
+438,wooloo,dubwool,"[""Lvl: 24""]",level-up,831,832
+439,chewtle,drednaw,"[""Lvl: 22""]",level-up,833,834
+440,yamper,boltund,"[""Lvl: 25""]",level-up,835,836
+441,rolycoly,carkol,"[""Lvl: 18""]",level-up,837,838
+441,carkol,coalossal,"[""Lvl: 34""]",level-up,838,839
+442,applin,flapple,"[""Item: tart-apple""]",use-item,840,841
+442,applin,appletun,"[""Item: sweet-apple""]",use-item,840,842
+442,applin,dipplin,[],,840,1011
+442,dipplin,hydrapple,[],,1011,1019
+443,silicobra,sandaconda,"[""Lvl: 36""]",level-up,843,844
+445,arrokuda,barraskewda,"[""Lvl: 26""]",level-up,846,847
+446,toxel,toxtricity,"[""Lvl: 30""]",level-up,848,849
+447,sizzlipede,centiskorch,"[""Lvl: 28""]",level-up,850,851
+448,clobbopus,grapploct,"[""Known Move: taunt""]",level-up,852,853
+449,sinistea,polteageist,"[""Item: cracked-pot""]",use-item,854,855
+450,hatenna,hattrem,"[""Lvl: 32""]",level-up,856,857
+450,hattrem,hatterene,"[""Lvl: 42""]",level-up,857,858
+451,impidimp,morgrem,"[""Lvl: 32""]",level-up,859,860
+451,morgrem,grimmsnarl,"[""Lvl: 42""]",level-up,860,861
+452,milcery,alcremie,[],spin,868,869
+455,snom,frosmoth,"[""Happiness: 160"",""Time of Day: night""]",level-up,872,873
+460,cufant,copperajah,"[""Lvl: 34""]",level-up,878,879
+465,duraludon,archaludon,[],,884,1018
+466,dreepy,drakloak,"[""Lvl: 50""]",level-up,885,886
+466,drakloak,dragapult,"[""Lvl: 60""]",level-up,886,887
+470,kubfu,urshifu,[],tower-of-darkness,891,892
+478,sprigatito,floragato,"[""Lvl: 16""]",level-up,906,907
+478,floragato,meowscarada,"[""Lvl: 36""]",level-up,907,908
+479,fuecoco,crocalor,"[""Lvl: 16""]",level-up,909,910
+479,crocalor,skeledirge,"[""Lvl: 36""]",level-up,910,911
+480,quaxly,quaxwell,"[""Lvl: 16""]",level-up,912,913
+480,quaxwell,quaquaval,"[""Lvl: 36""]",level-up,913,914
+481,lechonk,oinkologne,"[""Lvl: 18""]",level-up,915,916
+482,tarountula,spidops,"[""Lvl: 15""]",level-up,917,918
+483,nymble,lokix,"[""Lvl: 24""]",level-up,919,920
+484,pawmi,pawmo,"[""Lvl: 18""]",level-up,921,922
+484,pawmo,pawmot,[],other,922,923
+485,tandemaus,maushold,"[""Lvl: 25""]",other,924,925
+486,fidough,dachsbun,"[""Lvl: 26""]",level-up,926,927
+487,smoliv,dolliv,"[""Lvl: 25""]",level-up,928,929
+487,dolliv,arboliva,"[""Lvl: 35""]",level-up,929,930
+489,nacli,naclstack,"[""Lvl: 24""]",level-up,932,933
+489,naclstack,garganacl,"[""Lvl: 38""]",level-up,933,934
+490,charcadet,armarouge,"[""Item: auspicious-armor""]",use-item,935,936
+490,charcadet,ceruledge,"[""Item: malicious-armor""]",use-item,935,937
+491,tadbulb,bellibolt,"[""Item: thunder-stone""]",use-item,938,939
+492,wattrel,kilowattrel,"[""Lvl: 25""]",level-up,940,941
+493,maschiff,mabosstiff,"[""Lvl: 30""]",level-up,942,943
+494,shroodle,grafaiai,"[""Lvl: 28""]",level-up,944,945
+495,bramblin,brambleghast,[],other,946,947
+496,toedscool,toedscruel,"[""Lvl: 30""]",level-up,948,949
+498,capsakid,scovillain,"[""Item: fire-stone""]",use-item,951,952
+499,rellor,rabsca,[],other,953,954
+500,flittle,espathra,"[""Lvl: 35""]",level-up,955,956
+501,tinkatink,tinkatuff,"[""Lvl: 24""]",level-up,957,958
+501,tinkatuff,tinkaton,"[""Lvl: 38""]",level-up,958,959
+502,wiglett,wugtrio,"[""Lvl: 26""]",level-up,960,961
+504,finizen,palafin,"[""Lvl: 38""]",other,963,964
+505,varoom,revavroom,"[""Lvl: 40""]",level-up,965,966
+508,glimmet,glimmora,"[""Lvl: 35""]",level-up,969,970
+509,greavard,houndstone,"[""Lvl: 30"",""Time of Day: night""]",level-up,971,972
+511,cetoddle,cetitan,"[""Item: ice-stone""]",use-item,974,975
+527,frigibax,arctibax,"[""Lvl: 35""]",level-up,996,997
+527,arctibax,baxcalibur,"[""Lvl: 54""]",level-up,997,998
+528,gimmighoul,gholdengo,[],other,999,1000
+539,poltchageist,sinistcha,[],,1012,1013

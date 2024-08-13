@@ -63,4 +63,29 @@ class FilterCubit extends Cubit<FilterState> {
       emit(state.copyWith(filterEnabled: true));
     }
   }
+
+  void removeFilter(String filter) {
+    final selectedFilterGenerations =
+        List<String>.from(state.selectedFilterGenerations);
+    final selectedFilterTypes = List<String>.from(state.selectedFilterTypes);
+    final selectedFilterStatus = List<String>.from(state.selectedFilterStatus);
+    if (selectedFilterGenerations.contains(filter)) {
+      selectedFilterGenerations.remove(filter);
+    }
+    if (selectedFilterTypes.contains(filter)) {
+      selectedFilterTypes.remove(filter);
+    }
+    if (selectedFilterStatus.contains(filter)) {
+      selectedFilterStatus.remove(filter);
+    }
+    emit(state.copyWith(
+        selectedFilterGenerations: selectedFilterGenerations,
+        selectedFilterTypes: selectedFilterTypes,
+        selectedFilterStatus: selectedFilterStatus));
+    if (selectedFilterGenerations.isEmpty &&
+        selectedFilterTypes.isEmpty &&
+        selectedFilterStatus.isEmpty) {
+      emit(state.copyWith(filterEnabled: false));
+    }
+  }
 }

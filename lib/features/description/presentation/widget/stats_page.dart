@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/core/utils/color/type_color.dart';
+import 'package:pokedex/core/utils/functions/captalize_first_letter.dart';
 import 'package:pokedex/features/description/domain/entity/stat.dart';
 import 'package:pokedex/core/models/type.dart';
 import 'package:pokedex/features/description/presentation/widget/pokemon_stats.dart';
@@ -24,7 +25,7 @@ class StatsPage extends StatelessWidget {
                   child: PokemonStats(
                       indicatorColor:
                           PokemonTypeColor.getColorForType(pokemonType.name),
-                      statName: pokemonStats![index].name,
+                      statName: capitalize(pokemonStats![index].name),
                       statValue: pokemonStats![index].baseStat,
                       textColor: Colors.black),
                 );

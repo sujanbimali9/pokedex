@@ -3,10 +3,15 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class PokeBallClipper extends CustomClipper<Path> {
+  Path? _cachedPath;
   PokeBallClipper({this.width});
+
   double? width;
   @override
   Path getClip(Size size) {
+    if (_cachedPath != null) {
+      return _cachedPath!;
+    }
     final double radius = size.width / 2 + 0.3;
     var width = this.width ?? size.width / 3.5;
 
@@ -39,6 +44,7 @@ class PokeBallClipper extends CustomClipper<Path> {
           0,
           2 * math.pi)
       ..close();
+    _cachedPath = path;
     return path;
   }
 

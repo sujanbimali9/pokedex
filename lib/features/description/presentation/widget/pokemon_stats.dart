@@ -27,7 +27,7 @@ class PokemonStats extends StatelessWidget {
           style: const TextStyle(
             color: Colors.black54,
             fontSize: 16,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w400,
           ),
         ),
         const Spacer(),
@@ -40,7 +40,7 @@ class PokemonStats extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: 20,
+          width: 10,
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -48,7 +48,6 @@ class PokemonStats extends StatelessWidget {
             alignment: Alignment.centerLeft,
             children: [
               Container(
-                // duration: Durations.medium4,
                 height: 15,
                 width: maxBarWidth.clamp(0, maxBarWidth),
                 decoration: BoxDecoration(
